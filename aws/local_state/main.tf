@@ -11,22 +11,22 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region  = var.aws_region
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-091124c3965bce679"
-  instance_type = "t2.micro"
+  ami           = var.ami_id 
+  instance_type = var.instance_type
 
   tags = {
-    Name = "Terraform_Demo"
+    Name = var.ec2_name_tag
   }
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-s3-bucket-updated-s3"
+  bucket = var.s3_bucket_name
 
   tags = {
-    Name        = "my-s3-bucket"
+    Name        = var.s3_name_tag
   }
 }

@@ -24,7 +24,6 @@ resource "aws_instance" "app_server" {
 
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "my-s3-bucket-updated-s3"
-  acl    = "public-read"
 
   tags = {
     Name        = "my-s3-bucket"
